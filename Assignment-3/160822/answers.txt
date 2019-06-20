@@ -1,0 +1,14 @@
+1)tx.origin gives the origin of the transactions,which is the user address from which the original transaction was sent,while msg.sender gives the immediate sender which sends the message.
+It shouldn't be used for authorization as there may be multiple users who can use/interact our contract through a contract they've been written.
+
+2)The Contract ABI(Application Binary Interface) is the standard way to interact with contracts,and it's used to call functions in a contract and get data back from it.
+It's needed so that you can specify which function in contract to call and guarrantee that function returns data in the expected format.
+
+3)If a function is declared as view,it indicates that it won't modify the state of blockchain. It will not write to state variables,emit events.
+It will also not create other contracts,selfdestruct, send ether via calls or call any function not marked as view or pure.
+
+4)Both assert and require are used to check conditions,but there are some differences. Assert uses all remaining gas and reverts all changes,while require will refund the remaining gas.
+Assert conditions are you used to check bugs in code and to check if you never reach in an invalid state,or reach an unexpected bug(like divide by zero).
+
+5)The checksummed ethereum adrress has all letters in uppercase while non-checksummed doesn't have letters in uppercase.
+Both addresses lead to the same destination,however the checksummed version uses the case senstivity to find if an address is valid by comparing it to hash of address bytes, and to find typos in the address.
